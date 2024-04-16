@@ -38,7 +38,7 @@ public class AudienceManager : MonoBehaviour
 
         IEnumerable<Vector3> selectedSeats = SelectSeats(numberOfAvatarsToPlace);
 
-        Vector3 avatarOffset = new Vector3(0, -41, -8);    // still needs some adjustments
+        Vector3 avatarOffset = new Vector3(0, 0, 0);    // still needs some adjustments
         int idx = 0;
         
         foreach (var seatPosition in selectedSeats.ToList())
@@ -46,8 +46,8 @@ public class AudienceManager : MonoBehaviour
             Debug.Log(seatPosition.x + " " + seatPosition.y + " " + seatPosition.z);
             GameObject avatarInstance = Instantiate(avatars[idx], 
                 seatPosition + avatarOffset, 
-                Quaternion.Euler(0f, 180f, 0f));
-            avatarInstance.transform.localScale = new Vector3(52,52,52);
+                Quaternion.Euler(0f, 0f, 0f));
+           // avatarInstance.transform.localScale = new Vector3(52,52,52);
 
             avatarInstance.AddComponent<Animator>();
             avatarInstance.GetComponent<Animator>().runtimeAnimatorController = avatarAnimators[idx];
