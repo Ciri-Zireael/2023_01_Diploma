@@ -10,6 +10,8 @@ public class AudienceManager : MonoBehaviour
 	[SerializeField] private GameObject[] avatars;
     [SerializeField] private RuntimeAnimatorController[] avatarAnimators;
     [SerializeField] private int numberOfSeatsToFill;
+    [SerializeField] private Vector3 avatarOffset = new Vector3(0, 0, 0);
+    [SerializeField] private float avatarScale = 1;
     private List<Vector3> _allSittingPositions;
 
     void Start()
@@ -28,7 +30,6 @@ public class AudienceManager : MonoBehaviour
         }
     }
 
-    // all values  in the method below are being adjusted based on trial and error method
     void PlaceAvatars(int numberOfAvatarsToPlace)
     {
         if (numberOfAvatarsToPlace > _allSittingPositions.Count)
@@ -37,17 +38,16 @@ public class AudienceManager : MonoBehaviour
         }
 
         IEnumerable<Vector3> selectedSeats = SelectSeats(numberOfAvatarsToPlace);
-
-        Vector3 avatarOffset = new Vector3(0, 0, 0);    // still needs some adjustments
+        
         int idx = 0;
         
         foreach (var seatPosition in selectedSeats.ToList())
         {
             Debug.Log(seatPosition.x + " " + seatPosition.y + " " + seatPosition.z);
             GameObject avatarInstance = Instantiate(avatars[idx], 
-                seatPosition + avatarOffset, 
+                new Vector3(seatPosition.x, 0, seatPosition.z) + avatarOffset, 
                 Quaternion.Euler(0f, 0f, 0f));
-           // avatarInstance.transform.localScale = new Vector3(52,52,52);
+           avatarInstance.transform.localScale = new Vector3(avatarScale, avatarScale, avatarScale);
 
             avatarInstance.AddComponent<Animator>();
             avatarInstance.GetComponent<Animator>().runtimeAnimatorController = avatarAnimators[idx];
