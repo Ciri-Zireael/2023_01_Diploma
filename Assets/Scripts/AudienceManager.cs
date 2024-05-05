@@ -11,6 +11,7 @@ public class AudienceManager : MonoBehaviour
     [SerializeField] private RuntimeAnimatorController[] avatarAnimators;
     [SerializeField] private int numberOfSeatsToFill;
     [SerializeField] private Vector3 avatarOffset = new Vector3(0, 0, 0);
+    [SerializeField] private Vector3 avatarRotation = new Vector3(0, 0, 0);
     [SerializeField] private float avatarScale = 1;
     private List<Vector3> _allSittingPositions;
 
@@ -46,7 +47,7 @@ public class AudienceManager : MonoBehaviour
             Debug.Log(seatPosition.x + " " + seatPosition.y + " " + seatPosition.z);
             GameObject avatarInstance = Instantiate(avatars[idx], 
                 new Vector3(seatPosition.x, 0, seatPosition.z) + avatarOffset, 
-                Quaternion.Euler(0f, 0f, 0f));
+                Quaternion.Euler(avatarRotation.x, avatarRotation.y, avatarRotation.z));
            avatarInstance.transform.localScale = new Vector3(avatarScale, avatarScale, avatarScale);
 
             avatarInstance.AddComponent<Animator>();
