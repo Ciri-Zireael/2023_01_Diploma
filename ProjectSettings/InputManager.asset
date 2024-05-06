@@ -903,7 +903,7 @@ InputManager:
     joyNum: 0
   - serializedVersion: 3
     m_Name: XRI_Right_PrimaryButton
-    descriptiveName: Device primary button
+    descriptiveName: Previous Slide
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: joystick button 0
@@ -919,7 +919,7 @@ InputManager:
     joyNum: 0
   - serializedVersion: 3
     m_Name: XRI_Right_SecondaryButton
-    descriptiveName: Device secondary button
+    descriptiveName: Next Slide
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: joystick button 1

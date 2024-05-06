@@ -12,23 +12,23 @@ public class Timer : MonoBehaviour
 			ticksPassed++;
 		}
 	}
-	
-	public double GetSeconds()
+
+	public float GetSeconds()
 	{
 		return ticksPassed * Time.fixedDeltaTime;
 	}
 
-	public void StartTimer()
+	public void Start()
 	{
 		isRunning = true;
 	}
 
-	public void StopTimer()
+	public void Stop()
 	{
 		isRunning = false;
 	}
 
-	public void ResetTimer()
+	public void Reset()
 	{
 		ticksPassed = 0;
 	}
