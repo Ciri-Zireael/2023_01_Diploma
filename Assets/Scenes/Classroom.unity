@@ -213,7 +213,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 23103654}
   m_LocalRotation: {x: 0, y: -0.6322863, z: 0, w: 0.77473485}
-  m_LocalPosition: {x: 0, y: 0, z: -0.346}
+  m_LocalPosition: {x: 0, y: 0, z: -0.341}
   m_LocalScale: {x: 0.02229117, y: 0.011358646, z: 0.12659809}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -222,7 +222,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: -78.438, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -4.387, y: 2.0180016}
+  m_AnchoredPosition: {x: -4.41282, y: 2.0180016}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &216552406
@@ -288,6 +288,10 @@ PrefabInstance:
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
       propertyPath: m_Name
       value: XR Device Simulator
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -796,7 +800,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1255283874441932300, guid: bf6febae8bf382f468506a95b52ceca4, type: 3}
       propertyPath: m_LocalScale.x
-      value: 4.0765195
+      value: 6.477899
       objectReference: {fileID: 0}
     - target: {fileID: 1255283874441932300, guid: bf6febae8bf382f468506a95b52ceca4, type: 3}
       propertyPath: m_LocalScale.y
@@ -804,11 +808,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1255283874441932300, guid: bf6febae8bf382f468506a95b52ceca4, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.6813649
+      value: 1.8830324
       objectReference: {fileID: 0}
     - target: {fileID: 1255283874441932300, guid: bf6febae8bf382f468506a95b52ceca4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.979
+      value: -15.629
       objectReference: {fileID: 0}
     - target: {fileID: 1255283874441932300, guid: bf6febae8bf382f468506a95b52ceca4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -816,7 +820,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1255283874441932300, guid: bf6febae8bf382f468506a95b52ceca4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.4305
+      value: 2.666
       objectReference: {fileID: 0}
     - target: {fileID: 1255283874441932300, guid: bf6febae8bf382f468506a95b52ceca4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -953,7 +957,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 373e2e418273a7140830d80c04eff38d, type: 3}
       propertyPath: m_Name
-      value: classroom 2
+      value: classroom
       objectReference: {fileID: 0}
     - target: {fileID: 1638688855269254492, guid: 373e2e418273a7140830d80c04eff38d, type: 3}
       propertyPath: m_TagString
@@ -984,7 +988,9 @@ PrefabInstance:
       value: Chair
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: -2446737529199431200, guid: 373e2e418273a7140830d80c04eff38d, type: 3}
+    - {fileID: -1363486590758181533, guid: 373e2e418273a7140830d80c04eff38d, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8343248219658952724, guid: 373e2e418273a7140830d80c04eff38d, type: 3}
@@ -1041,7 +1047,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5566922330266466245, guid: 8064480c9ab11a345ae62c7375c04edf, type: 3}
       propertyPath: avatarScale
-      value: 0.9
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5566922330266466245, guid: 8064480c9ab11a345ae62c7375c04edf, type: 3}
       propertyPath: avatarOffset.x
