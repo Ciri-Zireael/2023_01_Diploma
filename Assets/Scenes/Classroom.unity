@@ -1055,6 +1055,58 @@ PrefabInstance:
       propertyPath: avatarRotation.y
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 5566922330266466245, guid: 8064480c9ab11a345ae62c7375c04edf, type: 3}
+      propertyPath: avatars.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5566922330266466245, guid: 8064480c9ab11a345ae62c7375c04edf, type: 3}
+      propertyPath: numberOfSeatsToFill
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5566922330266466245, guid: 8064480c9ab11a345ae62c7375c04edf, type: 3}
+      propertyPath: avatars.Array.data[5]
+      value: 
+      objectReference: {fileID: 919132149155446097, guid: 59e7843c0d2572f4097b46ce9e71471c, type: 3}
+    - target: {fileID: 5566922330266466245, guid: 8064480c9ab11a345ae62c7375c04edf, type: 3}
+      propertyPath: avatars.Array.data[6]
+      value: 
+      objectReference: {fileID: 919132149155446097, guid: 223d34520e395c04d9c1939004af4a44, type: 3}
+    - target: {fileID: 5566922330266466245, guid: 8064480c9ab11a345ae62c7375c04edf, type: 3}
+      propertyPath: avatars.Array.data[7]
+      value: 
+      objectReference: {fileID: 919132149155446097, guid: 30fbef224cafa1848a9e0a5437d84ddb, type: 3}
+    - target: {fileID: 5566922330266466245, guid: 8064480c9ab11a345ae62c7375c04edf, type: 3}
+      propertyPath: avatars.Array.data[8]
+      value: 
+      objectReference: {fileID: 919132149155446097, guid: 8194a8c5ac3de1942851d53da0db948e, type: 3}
+    - target: {fileID: 5566922330266466245, guid: 8064480c9ab11a345ae62c7375c04edf, type: 3}
+      propertyPath: avatars.Array.data[9]
+      value: 
+      objectReference: {fileID: 919132149155446097, guid: bf8f105d2ce59754a8998596a6bd8d83, type: 3}
+    - target: {fileID: 5566922330266466245, guid: 8064480c9ab11a345ae62c7375c04edf, type: 3}
+      propertyPath: avatarAnimators.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5566922330266466245, guid: 8064480c9ab11a345ae62c7375c04edf, type: 3}
+      propertyPath: avatarAnimators.Array.data[5]
+      value: 
+      objectReference: {fileID: 9100000, guid: b6cbb50191cc5b74d9729943ddfecd7a, type: 2}
+    - target: {fileID: 5566922330266466245, guid: 8064480c9ab11a345ae62c7375c04edf, type: 3}
+      propertyPath: avatarAnimators.Array.data[6]
+      value: 
+      objectReference: {fileID: 9100000, guid: 7af48c70caec6c247836df5345b75446, type: 2}
+    - target: {fileID: 5566922330266466245, guid: 8064480c9ab11a345ae62c7375c04edf, type: 3}
+      propertyPath: avatarAnimators.Array.data[7]
+      value: 
+      objectReference: {fileID: 9100000, guid: 2b4f34e0bf309d84a9d321105e3fe772, type: 2}
+    - target: {fileID: 5566922330266466245, guid: 8064480c9ab11a345ae62c7375c04edf, type: 3}
+      propertyPath: avatarAnimators.Array.data[8]
+      value: 
+      objectReference: {fileID: 9100000, guid: 5e89c83e6b4a0ed4e8e9957cdd17dd43, type: 2}
+    - target: {fileID: 5566922330266466245, guid: 8064480c9ab11a345ae62c7375c04edf, type: 3}
+      propertyPath: avatarAnimators.Array.data[9]
+      value: 
+      objectReference: {fileID: 9100000, guid: 4df5a980a0a3a1a42b8c1dc6b4b2dcc9, type: 2}
     - target: {fileID: 9201846398471606151, guid: 8064480c9ab11a345ae62c7375c04edf, type: 3}
       propertyPath: m_Name
       value: AudienceManager
