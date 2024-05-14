@@ -46,6 +46,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c405295131e118940992a3d190625666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ignoreWords:
+  - a
+  - an
+  - the
+  - at
+  - by
+  - of
+  - on
+  - to
+  - it
+  - is
+  - am
+  - are
+  - be
+  - of
+  - to
+  - its
+  - it's
   logOutput: 1
 --- !u!114 &4824337876696467251
 MonoBehaviour:
@@ -89,7 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   logLevel: 2
-  modelPath: Whisper/ggml-tiny.bin
+  modelPath: Whisper/ggml-small.en.bin
   isModelPathInStreamingAssets: 1
   initOnAwake: 1
   language: en
