@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class UserInput : MonoBehaviour, Input.UserInput.ISessionActions
 {
@@ -44,7 +45,7 @@ public class UserInput : MonoBehaviour, Input.UserInput.ISessionActions
 
     public void OnEndSession(InputAction.CallbackContext context)
     {
-        // TODO: Proper end session
-        throw new NotImplementedException();
+        // TODO: add a confirmation dialog or smth
+        SceneManager.LoadScene("Lobby");
     }
 }
