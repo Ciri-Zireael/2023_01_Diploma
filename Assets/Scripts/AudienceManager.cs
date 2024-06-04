@@ -51,6 +51,7 @@ public class AudienceManager : MonoBehaviour
            avatarInstance.transform.localScale = new Vector3(avatarScale, avatarScale, avatarScale);
 
             avatarInstance.AddComponent<Animator>();
+            avatarInstance.AddComponent<AvatarBehavior>();
             avatarInstance.GetComponent<Animator>().runtimeAnimatorController = avatarAnimators[idx];
             
             idx = (idx + 1) % avatars.Length;

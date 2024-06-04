@@ -57,3 +57,6 @@ MonoBehaviour:
   - {fileID: 9100000, guid: 4999020a663902347b1a68d4fe967a54, type: 2}
   - {fileID: 9100000, guid: 24005e8335a64fd4d8ce16d19926bed3, type: 2}
   numberOfSeatsToFill: 12
+  avatarOffset: {x: 0, y: 0, z: 0}
+  avatarRotation: {x: 0, y: 0, z: 0}
+  avatarScale: 1
