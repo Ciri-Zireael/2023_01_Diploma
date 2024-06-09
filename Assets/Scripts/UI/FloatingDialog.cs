@@ -28,12 +28,14 @@ public class FloatingDialog : MonoBehaviour
 
     public void Show()
     {
+        if (isActiveAndEnabled) return;
         gameObject.SetActive(true);
         darknessOverlay.On();
     }
 
     public void Hide()
     {
+        if (!isActiveAndEnabled) return;
         darknessOverlay.Off();
         gameObject.SetActive(false);
     }
