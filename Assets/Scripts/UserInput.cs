@@ -72,6 +72,6 @@ public class UserInput : MonoBehaviour, Input.UserInput.ISessionActions
     void OnDestroy()
     {
         SceneManager.sceneLoaded -= SetActionMap;
-        userInput.Session.Disable();
+        userInput?.Session.Disable();
     }
 }
