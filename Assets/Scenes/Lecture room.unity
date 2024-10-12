@@ -1064,11 +1064,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5566922330266466245, guid: 8064480c9ab11a345ae62c7375c04edf, type: 3}
       propertyPath: avatarOffset.x
-      value: -0.3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5566922330266466245, guid: 8064480c9ab11a345ae62c7375c04edf, type: 3}
       propertyPath: avatarOffset.z
-      value: 1.07
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5566922330266466245, guid: 8064480c9ab11a345ae62c7375c04edf, type: 3}
       propertyPath: avatarRotation.y
@@ -1076,7 +1076,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5566922330266466245, guid: 8064480c9ab11a345ae62c7375c04edf, type: 3}
       propertyPath: numberOfSeatsToFill
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9201846398471606151, guid: 8064480c9ab11a345ae62c7375c04edf, type: 3}
       propertyPath: m_Name
