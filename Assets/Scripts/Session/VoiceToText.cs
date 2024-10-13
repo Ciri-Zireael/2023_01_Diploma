@@ -42,6 +42,13 @@ public class VoiceToText : MonoBehaviour
     async void Start()
     {
         stream = await whisper.CreateStream(microphoneRecord);
+        if (stream == null)
+        {
+            Debug.LogWarning("No microphone is connected or no model was found. " +
+                             "Please go to https://huggingface.co/ggerganov/whisper.cpp/tree/main and download a model. " +
+                             "Then put it into Assets/StreamingAssets/Whisper/");
+            return;
+        }
         stream.OnSegmentFinished += OnSegmentFinished;
 
         StartListening();
