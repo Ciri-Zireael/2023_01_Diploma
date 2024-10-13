@@ -30,25 +30,16 @@ namespace Input
             ""id"": ""ca24cd42-9211-47b2-942e-799b0db23dbe"",
             ""actions"": [
                 {
-                    ""name"": ""NextSlide"",
-                    ""type"": ""Button"",
+                    ""name"": ""ChangeSlide"",
+                    ""type"": ""Value"",
                     ""id"": ""24a47c56-9c89-47e5-9a9c-8ad4a9f26ea2"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": ""Press(behavior=2)"",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""PrevSlide"",
-                    ""type"": ""Button"",
-                    ""id"": ""8c83968b-6e75-418b-bf56-4081e949daab"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press(behavior=2)"",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""EndSession"",
+                    ""name"": ""CallMenu"",
                     ""type"": ""Button"",
                     ""id"": ""8adfbe48-8388-4118-855b-f93adf0cc563"",
                     ""expectedControlType"": ""Button"",
@@ -61,22 +52,22 @@ namespace Input
                 {
                     ""name"": """",
                     ""id"": ""b8051750-6367-4b39-9bf5-8704027ea32a"",
-                    ""path"": ""<XRController>{RightHand}/{PrimaryButton}"",
+                    ""path"": ""<XRController>{LeftHand}/{Trigger}"",
                     ""interactions"": ""Press(behavior=2)"",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""NextSlide"",
+                    ""action"": ""ChangeSlide"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""cd3f9fe4-9a8d-412d-8181-dd4a328073d6"",
-                    ""path"": ""<XRController>{RightHand}/{SecondaryButton}"",
+                    ""id"": ""197e830c-00a3-458a-9cec-95bd4f646f66"",
+                    ""path"": ""<XRController>{RightHand}/{Trigger}"",
                     ""interactions"": ""Press(behavior=2)"",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""PrevSlide"",
+                    ""action"": ""ChangeSlide"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -87,7 +78,18 @@ namespace Input
                     ""interactions"": ""Press(behavior=2)"",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""EndSession"",
+                    ""action"": ""CallMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dd3f2d9e-0ed6-4f64-887f-e1306771cb3e"",
+                    ""path"": ""<XRController>{RightHand}/{PrimaryButton}"",
+                    ""interactions"": ""Press(behavior=2)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CallMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -98,9 +100,8 @@ namespace Input
 }");
             // Session
             m_Session = asset.FindActionMap("Session", throwIfNotFound: true);
-            m_Session_NextSlide = m_Session.FindAction("NextSlide", throwIfNotFound: true);
-            m_Session_PrevSlide = m_Session.FindAction("PrevSlide", throwIfNotFound: true);
-            m_Session_EndSession = m_Session.FindAction("EndSession", throwIfNotFound: true);
+            m_Session_ChangeSlide = m_Session.FindAction("ChangeSlide", throwIfNotFound: true);
+            m_Session_CallMenu = m_Session.FindAction("CallMenu", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -162,16 +163,14 @@ namespace Input
         // Session
         private readonly InputActionMap m_Session;
         private List<ISessionActions> m_SessionActionsCallbackInterfaces = new List<ISessionActions>();
-        private readonly InputAction m_Session_NextSlide;
-        private readonly InputAction m_Session_PrevSlide;
-        private readonly InputAction m_Session_EndSession;
+        private readonly InputAction m_Session_ChangeSlide;
+        private readonly InputAction m_Session_CallMenu;
         public struct SessionActions
         {
             private @UserInput m_Wrapper;
             public SessionActions(@UserInput wrapper) { m_Wrapper = wrapper; }
-            public InputAction @NextSlide => m_Wrapper.m_Session_NextSlide;
-            public InputAction @PrevSlide => m_Wrapper.m_Session_PrevSlide;
-            public InputAction @EndSession => m_Wrapper.m_Session_EndSession;
+            public InputAction @ChangeSlide => m_Wrapper.m_Session_ChangeSlide;
+            public InputAction @CallMenu => m_Wrapper.m_Session_CallMenu;
             public InputActionMap Get() { return m_Wrapper.m_Session; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -181,28 +180,22 @@ namespace Input
             {
                 if (instance == null || m_Wrapper.m_SessionActionsCallbackInterfaces.Contains(instance)) return;
                 m_Wrapper.m_SessionActionsCallbackInterfaces.Add(instance);
-                @NextSlide.started += instance.OnNextSlide;
-                @NextSlide.performed += instance.OnNextSlide;
-                @NextSlide.canceled += instance.OnNextSlide;
-                @PrevSlide.started += instance.OnPrevSlide;
-                @PrevSlide.performed += instance.OnPrevSlide;
-                @PrevSlide.canceled += instance.OnPrevSlide;
-                @EndSession.started += instance.OnEndSession;
-                @EndSession.performed += instance.OnEndSession;
-                @EndSession.canceled += instance.OnEndSession;
+                @ChangeSlide.started += instance.OnChangeSlide;
+                @ChangeSlide.performed += instance.OnChangeSlide;
+                @ChangeSlide.canceled += instance.OnChangeSlide;
+                @CallMenu.started += instance.OnCallMenu;
+                @CallMenu.performed += instance.OnCallMenu;
+                @CallMenu.canceled += instance.OnCallMenu;
             }
 
             private void UnregisterCallbacks(ISessionActions instance)
             {
-                @NextSlide.started -= instance.OnNextSlide;
-                @NextSlide.performed -= instance.OnNextSlide;
-                @NextSlide.canceled -= instance.OnNextSlide;
-                @PrevSlide.started -= instance.OnPrevSlide;
-                @PrevSlide.performed -= instance.OnPrevSlide;
-                @PrevSlide.canceled -= instance.OnPrevSlide;
-                @EndSession.started -= instance.OnEndSession;
-                @EndSession.performed -= instance.OnEndSession;
-                @EndSession.canceled -= instance.OnEndSession;
+                @ChangeSlide.started -= instance.OnChangeSlide;
+                @ChangeSlide.performed -= instance.OnChangeSlide;
+                @ChangeSlide.canceled -= instance.OnChangeSlide;
+                @CallMenu.started -= instance.OnCallMenu;
+                @CallMenu.performed -= instance.OnCallMenu;
+                @CallMenu.canceled -= instance.OnCallMenu;
             }
 
             public void RemoveCallbacks(ISessionActions instance)
@@ -222,9 +215,8 @@ namespace Input
         public SessionActions @Session => new SessionActions(this);
         public interface ISessionActions
         {
-            void OnNextSlide(InputAction.CallbackContext context);
-            void OnPrevSlide(InputAction.CallbackContext context);
-            void OnEndSession(InputAction.CallbackContext context);
+            void OnChangeSlide(InputAction.CallbackContext context);
+            void OnCallMenu(InputAction.CallbackContext context);
         }
     }
 }
