@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using UnityEngine;
 using Whisper;
 using Whisper.Utils;
@@ -28,18 +29,15 @@ public class VoiceToText : MonoBehaviour
 
     void Awake()
     {
-        whisper = GetComponent<WhisperManager>();
-        microphoneRecord = GetComponent<MicrophoneRecord>();
-    }
-
-    public void Reset()
-    {
-        StopListening();
-        text = "";
-        StartListening();
+        Init();
     }
 
     async void Start()
+    {
+        await InitStream();
+    }
+
+    async Task InitStream()
     {
         stream = await whisper.CreateStream(microphoneRecord);
         if (stream == null)
@@ -52,6 +50,33 @@ public class VoiceToText : MonoBehaviour
         stream.OnSegmentFinished += OnSegmentFinished;
 
         StartListening();
+    }
+
+    async void Reset()
+    {
+        StopListening();
+        
+        Init();
+        await InitStream();
+    }
+
+    void Init()
+    {
+        whisper = GetComponent<WhisperManager>();
+        microphoneRecord = GetComponent<MicrophoneRecord>();
+        text = "";
+    }
+
+    public void TurnOn()
+    {
+        Reset();
+        enabled = true;
+    }
+
+    public void TurnOff()
+    {
+        enabled = false;
+        StopListening();
     }
 
     public void StartListening()
