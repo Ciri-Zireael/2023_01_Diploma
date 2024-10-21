@@ -626,6 +626,7 @@ GameObject:
   m_Component:
   - component: {fileID: 161959081}
   - component: {fileID: 161959082}
+  - component: {fileID: 161959083}
   m_Layer: 5
   m_Name: Speech to Text
   m_TagString: Untagged
@@ -700,8 +701,32 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6253060035739421010, guid: 868ad072d16ce5849942e531a50f2e78, type: 3}
+        m_TargetAssemblyTypeName: VoiceToText, Assembly-CSharp
+        m_MethodName: set_IsOn
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   m_IsOn: 1
+--- !u!114 &161959083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161959080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d6a279e2e1055f3fb91dd2e81487150, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &219892513
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,134 +11,122 @@ using Whisper.Utils;
 [RequireComponent(typeof(MicrophoneRecord))]
 public class VoiceToText : MonoBehaviour
 {
-    [SerializeField] string[] ignoreWords =
-    {
-        "a", "an", "the", "at", "by",
-        "of", "on", "to", "it",
-        "is", "am", "are", "be",
-        "of", "to", "its", "it's"
-    };
+	[SerializeField] private string[] ignoreWords =
+	{
+		"a", "an", "the", "at", "by",
+		"of", "on", "to", "it",
+		"is", "am", "are", "be",
+		"of", "to", "its", "it's"
+	};
 
-    [SerializeField] bool logOutput;
-    MicrophoneRecord microphoneRecord;
-    WhisperStream stream;
+	[SerializeField] private bool logOutput;
+	public static bool IsOn { get; set; } = true;
+	private MicrophoneRecord microphoneRecord;
+	private WhisperStream stream;
 
-    string text;
+	private string text;
 
-    WhisperManager whisper;
+	private WhisperManager whisper;
 
-    void Awake()
-    {
-        Init();
-    }
+	private void Awake()
+	{
+		if (!IsOn) return;
+		Init();
+	}
 
-    async void Start()
-    {
-        await InitStream();
-    }
+	private async void Reset()
+	{
+		StopListening();
 
-    async Task InitStream()
-    {
-        stream = await whisper.CreateStream(microphoneRecord);
-        if (stream == null)
-        {
-            Debug.LogWarning("No microphone is connected or no model was found. " +
-                             "Please go to https://huggingface.co/ggerganov/whisper.cpp/tree/main and download a model. " +
-                             "Then put it into Assets/StreamingAssets/Whisper/");
-            return;
-        }
-        stream.OnSegmentFinished += OnSegmentFinished;
+		Init();
+		await InitStream();
+	}
 
-        StartListening();
-    }
+	private async void Start()
+	{
+		if (!IsOn) return;
+		await InitStream();
+	}
 
-    async void Reset()
-    {
-        StopListening();
-        
-        Init();
-        await InitStream();
-    }
+	private async Task InitStream()
+	{
+		stream = await whisper.CreateStream(microphoneRecord);
+		if (stream == null)
+		{
+			Debug.LogWarning("No microphone is connected or no model was found. " +
+			                 "Please go to https://huggingface.co/ggerganov/whisper.cpp/tree/main and download a model. " +
+			                 "Then put it into Assets/StreamingAssets/Whisper/");
+			return;
+		}
 
-    void Init()
-    {
-        whisper = GetComponent<WhisperManager>();
-        microphoneRecord = GetComponent<MicrophoneRecord>();
-        text = "";
-    }
+		stream.OnSegmentFinished += OnSegmentFinished;
 
-    public void TurnOn()
-    {
-        Reset();
-        enabled = true;
-    }
+		StartListening();
+	}
 
-    public void TurnOff()
-    {
-        enabled = false;
-        StopListening();
-    }
+	void Init()
+	{
+		whisper = GetComponent<WhisperManager>();
+		microphoneRecord = GetComponent<MicrophoneRecord>();
+		text = "";
+	}
+	
 
-    public void StartListening()
-    {
-        stream.StartStream();
-        microphoneRecord.StartRecord();
-    }
+	public void StartListening()
+	{
+		stream.StartStream();
+		microphoneRecord.StartRecord();
+	}
 
-    public void StopListening()
-    {
-        stream.StopStream();
-        microphoneRecord.StopRecord();
-    }
+	public void StopListening()
+	{
+		stream.StopStream();
+		microphoneRecord.StopRecord();
+	}
 
-    void OnSegmentFinished(WhisperResult segment)
-    {
-        string result = segment.Result;
+	void OnSegmentFinished(WhisperResult segment)
+	{
+		var result = segment.Result;
 
-        const string pattern = @"\[.*?\]|\(.*?\)";
+		const string pattern = @"\[.*?\]|\(.*?\)";
 
-        string filteredResult = Regex.Replace(result, pattern, "");
+		var filteredResult = Regex.Replace(result, pattern, "");
 
-        text += filteredResult;
+		text += filteredResult;
 
-        if (logOutput)
-        {
-            Debug.Log(segment.Result);
-        }
-    }
+		if (logOutput) Debug.Log(segment.Result);
+	}
 
-    public Dictionary<string, int> GetSortedWordUsage()
-    {
-        string[] words = text.Split(new[] { ' ', '.', ',', ';', ':', '!', '?' }, StringSplitOptions.RemoveEmptyEntries);
-        var wordUsage = new Dictionary<string, int>();
+	public Dictionary<string, int> GetSortedWordUsage()
+	{
+		var words = text.Split(new[] { ' ', '.', ',', ';', ':', '!', '?' }, StringSplitOptions.RemoveEmptyEntries);
+		var wordUsage = new Dictionary<string, int>();
 
-        foreach (string word in words)
-        {
-            string lowercaseWord = word.ToLower();
+		foreach (var word in words)
+		{
+			var lowercaseWord = word.ToLower();
 
-            if (ignoreWords.Contains(lowercaseWord))
-            {
-                continue;
-            }
+			if (ignoreWords.Contains(lowercaseWord)) continue;
 
-            if (wordUsage.ContainsKey(lowercaseWord))
-            {
-                wordUsage[lowercaseWord]++;
-            }
-            else
-            {
-                wordUsage[lowercaseWord] = 1;
-            }
-        }
+			if (wordUsage.ContainsKey(lowercaseWord))
+				wordUsage[lowercaseWord]++;
+			else
+				wordUsage[lowercaseWord] = 1;
+		}
 
-        Dictionary<string, int> sortedWordUsage = wordUsage.OrderByDescending(kv => kv.Value)
-            .ToDictionary(kv => kv.Key, kv => kv.Value);
+		var sortedWordUsage = wordUsage.OrderByDescending(kv => kv.Value)
+			.ToDictionary(kv => kv.Key, kv => kv.Value);
 
-        return sortedWordUsage;
-    }
+		return sortedWordUsage;
+	}
 
-    public string GetRawText()
-    {
-        return text;
-    }
+	private void OnDestroy()
+	{
+		StopListening();
+	}
+
+	public string GetRawText()
+	{
+		return text;
+	}
 }
