@@ -50,10 +50,33 @@ MonoBehaviour:
   - {fileID: 919132149155446097, guid: e177e71e85cedea4aac9a95d1f37cccd, type: 3}
   - {fileID: 919132149155446097, guid: d9f6bf7d4d5b11b41aba1273ff467a50, type: 3}
   - {fileID: 919132149155446097, guid: eea5731ac5ea79946a7610938ae8fc40, type: 3}
+  - {fileID: 919132149155446097, guid: 59e7843c0d2572f4097b46ce9e71471c, type: 3}
+  - {fileID: 919132149155446097, guid: 223d34520e395c04d9c1939004af4a44, type: 3}
+  - {fileID: 919132149155446097, guid: 30fbef224cafa1848a9e0a5437d84ddb, type: 3}
+  - {fileID: 919132149155446097, guid: 8194a8c5ac3de1942851d53da0db948e, type: 3}
+  - {fileID: 919132149155446097, guid: bf8f105d2ce59754a8998596a6bd8d83, type: 3}
+  - {fileID: 919132149155446097, guid: b780f37d56d1c164d90c4e99ec6577f3, type: 3}
+  - {fileID: 919132149155446097, guid: b9835be6222edea408f58eeacf43c49c, type: 3}
+  - {fileID: 919132149155446097, guid: cf20d80a4af7d814987c5cde1f7b05b8, type: 3}
+  - {fileID: 919132149155446097, guid: 696ae9377d5a838439c12d4e6fc560c7, type: 3}
+  - {fileID: 919132149155446097, guid: 4077274edcae4d549ab82875236a9d97, type: 3}
   avatarAnimators:
   - {fileID: 9100000, guid: 5db5cfec32594ba4183251ba335ef7ff, type: 2}
   - {fileID: 9100000, guid: 0b2fecb2054d13d4090af07e9bd1fbb9, type: 2}
   - {fileID: 9100000, guid: 737db75a9b2840449800596b7202214e, type: 2}
   - {fileID: 9100000, guid: 4999020a663902347b1a68d4fe967a54, type: 2}
   - {fileID: 9100000, guid: 24005e8335a64fd4d8ce16d19926bed3, type: 2}
+  - {fileID: 9100000, guid: b6cbb50191cc5b74d9729943ddfecd7a, type: 2}
+  - {fileID: 9100000, guid: 7af48c70caec6c247836df5345b75446, type: 2}
+  - {fileID: 9100000, guid: 2b4f34e0bf309d84a9d321105e3fe772, type: 2}
+  - {fileID: 9100000, guid: 5e89c83e6b4a0ed4e8e9957cdd17dd43, type: 2}
+  - {fileID: 9100000, guid: 4df5a980a0a3a1a42b8c1dc6b4b2dcc9, type: 2}
+  - {fileID: 9100000, guid: efe4ffd4d396d624aac682598ebf0fa5, type: 2}
+  - {fileID: 9100000, guid: 81cacf72955a7bd4e9211ae82631dedf, type: 2}
+  - {fileID: 9100000, guid: 1a0bf35d54ab91f4996c977edd820a48, type: 2}
+  - {fileID: 9100000, guid: 4f8e2a482354e9a479dd0ad336273524, type: 2}
+  - {fileID: 9100000, guid: d17e74b4f024fd44d819ff543b0ca564, type: 2}
   numberOfSeatsToFill: 12
+  avatarOffset: {x: 0, y: 0, z: 0}
+  avatarRotation: {x: 0, y: 0, z: 0}
+  avatarScale: 1
