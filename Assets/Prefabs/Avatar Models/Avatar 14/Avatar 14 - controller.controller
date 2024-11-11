@@ -91,7 +91,10 @@ AnimatorStateMachine:
     m_Position: {x: 522.5, y: 257.5, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7757343397107682427}
-    m_Position: {x: 584.5, y: 333.5, z: 0}
+    m_Position: {x: 520, y: 320, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 2156561865706708986}
+    m_Position: {x: 520, y: 380, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -102,6 +105,32 @@ AnimatorStateMachine:
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: -789302585632915187}
+--- !u!1102 &2156561865706708986
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Bored
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: -203655887218126122, guid: 828ba3ece6d3c7f419606dd9e4603c57, type: 3}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &2997783314245082069
 AnimatorState:
   serializedVersion: 6
