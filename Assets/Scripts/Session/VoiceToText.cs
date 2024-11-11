@@ -11,7 +11,7 @@ using Whisper.Utils;
 [RequireComponent(typeof(MicrophoneRecord))]
 public class VoiceToText : MonoBehaviour
 {
-	[SerializeField] private string[] ignoreWords =
+	[SerializeField] string[] ignoreWords =
 	{
 		"a", "an", "the", "at", "by",
 		"of", "on", "to", "it",
@@ -19,22 +19,24 @@ public class VoiceToText : MonoBehaviour
 		"of", "to", "its", "it's"
 	};
 
-	[SerializeField] private bool logOutput;
-	public static bool IsOn { get; set; } = true;
-	private MicrophoneRecord microphoneRecord;
-	private WhisperStream stream;
+	[SerializeField] bool logOutput;
+	public bool isOn { get; private set; }
+	MicrophoneRecord microphoneRecord;
+	WhisperStream stream;
 
-	private string text;
+	string text;
 
-	private WhisperManager whisper;
+	WhisperManager whisper;
 
-	private void Awake()
+	void Awake()
 	{
-		if (!IsOn) return;
+		isOn = PlayerPrefs.GetInt("STT", 1) == 1;
+		
+		if (!isOn) return;
 		Init();
 	}
 
-	private async void Reset()
+	async void Reset()
 	{
 		StopListening();
 
@@ -42,13 +44,13 @@ public class VoiceToText : MonoBehaviour
 		await InitStream();
 	}
 
-	private async void Start()
+	async void Start()
 	{
-		if (!IsOn) return;
+		if (!isOn) return;
 		await InitStream();
 	}
 
-	private async Task InitStream()
+	async Task InitStream()
 	{
 		stream = await whisper.CreateStream(microphoneRecord);
 		if (stream == null)
@@ -120,7 +122,7 @@ public class VoiceToText : MonoBehaviour
 		return sortedWordUsage;
 	}
 
-	private void OnDestroy()
+	void OnDestroy()
 	{
 		StopListening();
 	}
