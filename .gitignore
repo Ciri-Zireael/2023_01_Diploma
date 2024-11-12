@@ -73,3 +73,6 @@ crashlytics-build.properties
 
 # Whisper models
 /[Aa]ssets/[Ss]treamingAssets/Whisper/
+
+# IDE files
+/.idea/

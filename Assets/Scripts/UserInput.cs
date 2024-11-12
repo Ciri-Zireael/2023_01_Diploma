@@ -8,8 +8,7 @@ public class UserInput : MonoBehaviour, Input.UserInput.ISessionActions
     Input.UserInput userInput;
     SlideHolder[] slideHolders;
     FloatingDialog confirmationDialog;
-    [SerializeField] float leftTriggerThreshold = 0.15f;
-    [SerializeField] float rightTriggerThreshold = 0.9f;
+    [SerializeField] float threshold = 0.5f;
 
     void Awake()
     {
@@ -37,9 +36,9 @@ public class UserInput : MonoBehaviour, Input.UserInput.ISessionActions
     {
         if (context.started)
         {
-            float triggerValue = context.ReadValue<float>();
+            Vector2 joystickValue = context.ReadValue<Vector2>();
 
-            if (triggerValue >= rightTriggerThreshold)
+            if (joystickValue.x >= threshold)
             {
                 foreach (var slideHolder in slideHolders)
                 {
@@ -47,7 +46,7 @@ public class UserInput : MonoBehaviour, Input.UserInput.ISessionActions
                 }
             }
 
-            if (triggerValue <= leftTriggerThreshold)
+            if (joystickValue.x <= -threshold)
             {
                 foreach (var slideHolder in slideHolders)
                 {

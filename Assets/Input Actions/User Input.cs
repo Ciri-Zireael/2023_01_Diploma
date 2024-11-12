@@ -33,7 +33,7 @@ namespace Input
                     ""name"": ""ChangeSlide"",
                     ""type"": ""Value"",
                     ""id"": ""24a47c56-9c89-47e5-9a9c-8ad4a9f26ea2"",
-                    ""expectedControlType"": ""Axis"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": ""Press(behavior=2)"",
                     ""initialStateCheck"": true
@@ -52,7 +52,7 @@ namespace Input
                 {
                     ""name"": """",
                     ""id"": ""b8051750-6367-4b39-9bf5-8704027ea32a"",
-                    ""path"": ""<XRController>{LeftHand}/{Trigger}"",
+                    ""path"": ""<XRController>{LeftHand}/{Primary2DAxis}"",
                     ""interactions"": ""Press(behavior=2)"",
                     ""processors"": """",
                     ""groups"": """",
@@ -63,7 +63,7 @@ namespace Input
                 {
                     ""name"": """",
                     ""id"": ""197e830c-00a3-458a-9cec-95bd4f646f66"",
-                    ""path"": ""<XRController>{RightHand}/{Trigger}"",
+                    ""path"": ""<XRController>{RightHand}/{Primary2DAxis}"",
                     ""interactions"": ""Press(behavior=2)"",
                     ""processors"": """",
                     ""groups"": """",
