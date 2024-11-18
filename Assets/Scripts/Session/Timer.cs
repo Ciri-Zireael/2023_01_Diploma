@@ -13,17 +13,17 @@ public class Timer : MonoBehaviour
 		}
 	}
 
-	public float GetSeconds()
+	public int GetSeconds()
 	{
-		return ticksPassed * Time.fixedDeltaTime;
+		return Mathf.FloorToInt(ticksPassed * Time.fixedDeltaTime);
 	}
-
-	public void Start()
+	
+	public void Run()
 	{
 		isRunning = true;
 	}
 
-	public void Stop()
+	public void Pause()
 	{
 		isRunning = false;
 	}
