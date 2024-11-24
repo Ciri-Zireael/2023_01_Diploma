@@ -9,7 +9,7 @@ using Whisper.Utils;
 
 [RequireComponent(typeof(WhisperManager))]
 [RequireComponent(typeof(MicrophoneRecord))]
-public class VoiceToText : MonoBehaviour
+public class SpeechToText : MonoBehaviour
 {
 	[SerializeField] string[] ignoreWords =
 	{
