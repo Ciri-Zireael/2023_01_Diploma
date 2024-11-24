@@ -5,12 +5,13 @@ using System.Linq;
 public class SlideHolder : MonoBehaviour
 {
 	[SerializeField] Sprite[] images;
-	[SerializeField] string folderPath = "Presentation1";
+	public static string folderPath = "Presentation1";
 	Image canvas;
 	int currentImageIndex;
 
 	void Awake()
 	{
+		Debug.Log("Hi, I'm awake. folderPath = " + folderPath);
 		canvas = GetComponent<Image>();
 		LoadSlides();
 	}
@@ -54,5 +55,10 @@ public class SlideHolder : MonoBehaviour
 		}
 
 		canvas.sprite = images[currentImageIndex];
+	}
+	
+	public static void SetPresentationPath(string newPath)
+	{
+		folderPath = newPath;
 	}
 }
