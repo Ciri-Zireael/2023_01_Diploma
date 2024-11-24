@@ -44,7 +44,6 @@ public class AudienceManager : MonoBehaviour
         
         foreach (var seatPosition in selectedSeats.ToList())
         {
-            Debug.Log(seatPosition.x + " " + seatPosition.y + " " + seatPosition.z);
             GameObject avatarInstance = Instantiate(avatars[idx], 
                 new Vector3(seatPosition.x, 0, seatPosition.z) + avatarOffset, 
                 Quaternion.Euler(avatarRotation.x, avatarRotation.y, avatarRotation.z));
