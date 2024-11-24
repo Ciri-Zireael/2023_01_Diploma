@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 using System.IO;
 using System.Collections.Generic;
 using TMPro;
@@ -39,6 +38,10 @@ public class SlidesDropdown : MonoBehaviour
 
             // Add the names to the dropdown
             presentationDropdown.AddOptions(presentationNames);
+            
+            // Select the chosen presentation if it was saved before
+            presentationDropdown.value = PlayerPrefs.GetInt("Presentation", 0);
+            presentationDropdown.RefreshShownValue();
         }
         else
         {
@@ -49,6 +52,10 @@ public class SlidesDropdown : MonoBehaviour
     public void OnDropdownValueChanged(int index)
     {
         LoadPresentation(presentationPaths[index]);
+        
+        // Save the choice
+        PlayerPrefs.SetInt("Presentation", index);
+        PlayerPrefs.Save();
     }
 
     void LoadPresentation(string folderPath)
