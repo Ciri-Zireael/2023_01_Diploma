@@ -84,7 +84,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &4892353309977931611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 16829b79bd1ec9248a703ff5270425c3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e7bdc14560b255e479d6f4a9fb762ba6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -191,14 +191,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   images:
-  - {fileID: 21300000, guid: 16829b79bd1ec9248a703ff5270425c3, type: 3}
-  - {fileID: 21300000, guid: ac70ac10c1e396044814d8ec5c2608a7, type: 3}
-  - {fileID: 21300000, guid: 9d770b4a9ff33614eaf62801dd919685, type: 3}
-  - {fileID: 21300000, guid: 34f96fff69b5ed6408cc9b0a503f80c2, type: 3}
-  - {fileID: 21300000, guid: 3b30db46038252248a15822080294d9d, type: 3}
-  - {fileID: 21300000, guid: 3634ff4d893b0484ebdbe587b897df2c, type: 3}
-  - {fileID: 21300000, guid: 0099e81e7c939ef4d8778982f178646a, type: 3}
-  - {fileID: 21300000, guid: 5f1d022191796584fb92070ecf7d7c5d, type: 3}
-  - {fileID: 21300000, guid: 2e0e3c6131a7a9b46bbf21a50ec574a4, type: 3}
-  - {fileID: 21300000, guid: 25a608aec7fde834e8aa780268eafed1, type: 3}
-  - {fileID: 21300000, guid: e0096cf2ec404ca46a4f519cd8077919, type: 3}
+  - {fileID: 21300000, guid: e7bdc14560b255e479d6f4a9fb762ba6, type: 3}
+  folderPath: Presentation1
