@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -23,6 +24,16 @@ public class SpeechToText : MonoBehaviour
 	public bool isOn { get; private set; }
 	MicrophoneRecord microphoneRecord;
 	WhisperStream stream;
+	HintSystem hintSystem;
+	[SerializeField] float minPaceForHint = 0.15f;
+	[SerializeField] string hintTextForMinPace;
+	[SerializeField] string hintTextForMaxPace;
+	[SerializeField] float maxPaceForHint = 1.5f;
+	[SerializeField] int hintGapInSeconds = 15;
+	float secsSinceLastHint;
+	int totalWordCount;
+	float speechStartTime;
+	float totalSpeechDuration;
 
 	string text;
 
@@ -34,6 +45,11 @@ public class SpeechToText : MonoBehaviour
 		
 		if (!isOn) return;
 		Init();
+	}
+
+	void FixedUpdate()
+	{
+		secsSinceLastHint += Time.fixedDeltaTime;
 	}
 
 	async void Reset()
@@ -62,6 +78,7 @@ public class SpeechToText : MonoBehaviour
 		}
 
 		stream.OnSegmentFinished += OnSegmentFinished;
+		microphoneRecord.OnVadChanged += HandleVadChanged;
 
 		StartListening();
 	}
@@ -70,10 +87,10 @@ public class SpeechToText : MonoBehaviour
 	{
 		whisper = GetComponent<WhisperManager>();
 		microphoneRecord = GetComponent<MicrophoneRecord>();
+		hintSystem = GetComponent<HintSystem>();
 		text = "";
 	}
 	
-
 	public void StartListening()
 	{
 		stream.StartStream();
@@ -82,23 +99,77 @@ public class SpeechToText : MonoBehaviour
 
 	public void StopListening()
 	{
+		stream.OnSegmentFinished -= OnSegmentFinished;
+		microphoneRecord.OnVadChanged -= HandleVadChanged;
+		
 		stream.StopStream();
 		microphoneRecord.StopRecord();
 	}
 
+	void HandleVadChanged(bool isSpeechDetected)
+	{
+		if (isSpeechDetected)
+		{
+			speechStartTime = Time.time;
+		}
+		else
+		{
+			totalSpeechDuration += Time.time - speechStartTime;
+		}
+	}
+	
 	void OnSegmentFinished(WhisperResult segment)
 	{
 		var result = segment.Result;
 
-		const string pattern = @"\[.*?\]|\(.*?\)";
+		const string pattern = @"\[.*?\]|\(.*?\)|\*.*?\*";
 
 		var filteredResult = Regex.Replace(result, pattern, "");
 
 		text += filteredResult;
 
 		if (logOutput) Debug.Log(segment.Result);
-	}
+		
+		int wordCount = CountWords(filteredResult); // Count words in the transcribed result
+		totalWordCount += wordCount;
 
+		float pace = CalculateSpeechPace();
+		
+		if (logOutput) Debug.Log($"Total Words: {totalWordCount}, Total Duration: {totalSpeechDuration} seconds, Pace: {pace} words/sec");
+
+		Debug.Log("Secs since last hint: " + secsSinceLastHint);
+		if (secsSinceLastHint < hintGapInSeconds) return;
+		if (pace < minPaceForHint)
+		{
+			hintSystem.ShowHint(hintTextForMinPace);
+			secsSinceLastHint = 0;
+		}
+		if (pace > maxPaceForHint)
+		{
+			hintSystem.ShowHint(hintTextForMaxPace);
+			secsSinceLastHint = 0;
+		}
+	}
+	
+	int CountWords(string text)
+	{
+		if (string.IsNullOrWhiteSpace(text))
+		{
+			return 0;
+		}
+        
+		return text.Split(new[] { ' ', '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries).Length;
+	}
+	
+	float CalculateSpeechPace()
+	{
+		if (totalSpeechDuration > 0)
+		{
+			return totalWordCount / totalSpeechDuration; // Words per second
+		}
+		return 0f;
+	}
+	
 	public Dictionary<string, int> GetSortedWordUsage()
 	{
 		var words = text.Split(new[] { ' ', '.', ',', ';', ':', '!', '?' }, StringSplitOptions.RemoveEmptyEntries);
