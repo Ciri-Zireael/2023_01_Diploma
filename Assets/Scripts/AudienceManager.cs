@@ -102,16 +102,12 @@ public class AudienceManager : MonoBehaviour
             {
                 if (otherAvatar == avatar) continue;
 
-                // Check distance
-                float distance = Vector3.Distance(avatar.transform.position, otherAvatar.transform.position);
-                if (distance > neighborDetectionRadius) continue;
+                // Get the position of the other avatar in the local space of the current avatar
+                Vector3 localPosition = avatar.transform.InverseTransformPoint(otherAvatar.transform.position);
 
-                // Check if the other avatar is to the left or right
-                Vector3 directionToOther = (otherAvatar.transform.position - avatar.transform.position).normalized;
-                float dotProduct = Vector3.Dot(avatar.transform.right, directionToOther);
-
-                // Dot product > 0: to the right, < 0: to the left
-                if (dotProduct > 0.5f || dotProduct < -0.5f) // Adjust threshold for "strictness"
+                // Check alignment in local space
+                if (Mathf.Abs(localPosition.z) > 0.5f) continue; // Ignore if not near the left-right plane
+                if (localPosition.x > 0.5f || localPosition.x < -0.5f) // Strictly left or right
                 {
                     neighbors.Add(otherAvatar);
                 }
@@ -120,6 +116,8 @@ public class AudienceManager : MonoBehaviour
             _neighborMap.Add(avatar, neighbors);
         }
     }
+
+
 
     
     void TriggerRandomInteractions()
