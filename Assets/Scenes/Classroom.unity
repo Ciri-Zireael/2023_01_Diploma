@@ -2000,6 +2000,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 919132149155446097, guid: bf8f105d2ce59754a8998596a6bd8d83, type: 3}
     - target: {fileID: 5566922330266466245, guid: 8064480c9ab11a345ae62c7375c04edf, type: 3}
+      propertyPath: neighborDetectionRadius
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5566922330266466245, guid: 8064480c9ab11a345ae62c7375c04edf, type: 3}
       propertyPath: avatarAnimators.Array.size
       value: 10
       objectReference: {fileID: 0}
