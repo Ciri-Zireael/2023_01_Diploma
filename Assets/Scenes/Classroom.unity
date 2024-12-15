@@ -515,6 +515,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4824337876696467251, guid: 868ad072d16ce5849942e531a50f2e78, type: 3}
+      propertyPath: echo
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6253060035739421010, guid: 868ad072d16ce5849942e531a50f2e78, type: 3}
       propertyPath: hintTextForMaxPace
       value: Whooah easy there, easy. You've been out cold a couple a days now. Why
