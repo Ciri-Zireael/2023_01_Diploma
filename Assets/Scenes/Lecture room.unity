@@ -1233,7 +1233,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5566922330266466245, guid: 8064480c9ab11a345ae62c7375c04edf, type: 3}
       propertyPath: numberOfSeatsToFill
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 9201846398471606151, guid: 8064480c9ab11a345ae62c7375c04edf, type: 3}
       propertyPath: m_Name
