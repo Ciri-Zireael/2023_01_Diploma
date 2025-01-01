@@ -1,0 +1,76 @@
+{
+    "name": "User Input",
+    "maps": [
+        {
+            "name": "Session",
+            "id": "ca24cd42-9211-47b2-942e-799b0db23dbe",
+            "actions": [
+                {
+                    "name": "ChangeSlide",
+                    "type": "Value",
+                    "id": "24a47c56-9c89-47e5-9a9c-8ad4a9f26ea2",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "Press(behavior=2)",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "CallMenu",
+                    "type": "Button",
+                    "id": "8adfbe48-8388-4118-855b-f93adf0cc563",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=2)",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "b8051750-6367-4b39-9bf5-8704027ea32a",
+                    "path": "<XRController>{LeftHand}/{Primary2DAxis}",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeSlide",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "197e830c-00a3-458a-9cec-95bd4f646f66",
+                    "path": "<XRController>{RightHand}/{Primary2DAxis}",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeSlide",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5ff4c5d8-a2fe-48e9-976c-66bfad0225d3",
+                    "path": "<XRController>{LeftHand}/{PrimaryButton}",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CallMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dd3f2d9e-0ed6-4f64-887f-e1306771cb3e",
+                    "path": "<XRController>{RightHand}/{PrimaryButton}",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CallMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
