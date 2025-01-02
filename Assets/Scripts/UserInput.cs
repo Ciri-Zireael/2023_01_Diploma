@@ -65,10 +65,13 @@ public class UserInput : MonoBehaviour, Input.UserInput.ISessionActions
 
     public void GoToLobby()
     {
-        if (PlayerPrefs.GetInt("STT") == 1)
+        if (analyticsCollector != null)
         {
-            analyticsCollector.SaveAnalytics();
-            Debug.Log("All good");
+            if (PlayerPrefs.GetInt("STT") == 1)
+            {
+                analyticsCollector.SaveAnalytics();
+                Debug.Log("All good");
+            }
         }
         SceneManager.LoadScene("Lobby");
     }
