@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -161,7 +162,7 @@ public class SpeechToText : MonoBehaviour
 		return text.Split(new[] { ' ', '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries).Length;
 	}
 	
-	float CalculateSpeechPace()
+	public float CalculateSpeechPace()
 	{
 		if (totalSpeechDuration > 0)
 		{
@@ -170,7 +171,7 @@ public class SpeechToText : MonoBehaviour
 		return 0f;
 	}
 	
-	public Dictionary<string, int> GetSortedWordUsage()
+	public string GetSortedWordUsage(int topN)
 	{
 		var words = text.Split(new[] { ' ', '.', ',', ';', ':', '!', '?' }, StringSplitOptions.RemoveEmptyEntries);
 		var wordUsage = new Dictionary<string, int>();
@@ -188,9 +189,17 @@ public class SpeechToText : MonoBehaviour
 		}
 
 		var sortedWordUsage = wordUsage.OrderByDescending(kv => kv.Value)
-			.ToDictionary(kv => kv.Key, kv => kv.Value);
+		.OrderByDescending(kv => kv.Value)
+		.Take(topN)
+		.ToDictionary(kv => kv.Key, kv => kv.Value);
 
-		return sortedWordUsage;
+		var result = new StringBuilder();
+		foreach (var entry in sortedWordUsage)
+		{
+			result.AppendLine($"{entry.Key}: {entry.Value}");
+		}
+
+		return result.ToString().TrimEnd();
 	}
 
 	void OnDestroy()
