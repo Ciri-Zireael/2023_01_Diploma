@@ -8,6 +8,7 @@ public class UserInput : MonoBehaviour, Input.UserInput.ISessionActions
     Input.UserInput userInput;
     SlideHolder[] slideHolders;
     FloatingDialog confirmationDialog;
+    [SerializeField] AnalyticsCollector analyticsCollector;
     [SerializeField] float threshold = 0.5f;
 
     void Awake()
@@ -19,15 +20,15 @@ public class UserInput : MonoBehaviour, Input.UserInput.ISessionActions
     {
         slideHolders = FindObjectsOfType<SlideHolder>();
     }
-    
+	
     void SetActionMap(Scene scene, LoadSceneMode mode)
     {
         if (scene.name == "Lobby") return;
-        
+
         userInput = new Input.UserInput();
         userInput.Session.SetCallbacks(this);
         userInput.Session.Enable();
-        
+
         Canvas[] canvases = Resources.FindObjectsOfTypeAll<Canvas>();
         confirmationDialog = canvases.FirstOrDefault(canvas => canvas.gameObject.name == "Confirmation Dialog")?.GetComponent<FloatingDialog>();
     }
@@ -64,6 +65,14 @@ public class UserInput : MonoBehaviour, Input.UserInput.ISessionActions
 
     public void GoToLobby()
     {
+        if (analyticsCollector != null)
+        {
+            if (PlayerPrefs.GetInt("STT") == 1)
+            {
+                analyticsCollector.SaveAnalytics();
+                Debug.Log("All good");
+            }
+        }
         SceneManager.LoadScene("Lobby");
     }
 
@@ -71,7 +80,7 @@ public class UserInput : MonoBehaviour, Input.UserInput.ISessionActions
     {
         confirmationDialog.Hide();
     }
-    
+	
     void OnDestroy()
     {
         SceneManager.sceneLoaded -= SetActionMap;
