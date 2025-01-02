@@ -9,6 +9,6 @@ public class AnalyticsTime : MonoBehaviour
 	{
 		text = GetComponent<TextMeshProUGUI>();
 
-		text.text = PlayerPrefs.GetInt("Time", 0).ToString();
+		text.text = PlayerPrefs.GetInt("Time", 0).ToString() + " s";
 	}
 }
