@@ -9,6 +9,6 @@ public class AnalyticsPace : MonoBehaviour
 	{
 		text = GetComponent<TextMeshProUGUI>();
 
-		text.text = PlayerPrefs.GetFloat("Pace", 0).ToString("F1");
+		text.text = PlayerPrefs.GetFloat("Pace", 0).ToString("F1") + " words/min";
 	}
 }
