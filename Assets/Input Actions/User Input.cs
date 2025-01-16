@@ -30,51 +30,38 @@ namespace Input
             ""id"": ""ca24cd42-9211-47b2-942e-799b0db23dbe"",
             ""actions"": [
                 {
-                    ""name"": ""ChangeSlide"",
-                    ""type"": ""Value"",
-                    ""id"": ""24a47c56-9c89-47e5-9a9c-8ad4a9f26ea2"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": ""Press(behavior=2)"",
-                    ""initialStateCheck"": true
-                },
-                {
                     ""name"": ""CallMenu"",
                     ""type"": ""Button"",
                     ""id"": ""8adfbe48-8388-4118-855b-f93adf0cc563"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press(behavior=2)"",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SlidePrev"",
+                    ""type"": ""Button"",
+                    ""id"": ""8575cda9-f5f6-4509-8dab-2f212c4de16d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SlideNext"",
+                    ""type"": ""Button"",
+                    ""id"": ""e62fdce2-12b5-442e-a818-58c99b9ab8c1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
                     ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""b8051750-6367-4b39-9bf5-8704027ea32a"",
-                    ""path"": ""<XRController>{LeftHand}/{Primary2DAxis}"",
-                    ""interactions"": ""Press(behavior=2)"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ChangeSlide"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""197e830c-00a3-458a-9cec-95bd4f646f66"",
-                    ""path"": ""<XRController>{RightHand}/{Primary2DAxis}"",
-                    ""interactions"": ""Press(behavior=2)"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ChangeSlide"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""5ff4c5d8-a2fe-48e9-976c-66bfad0225d3"",
-                    ""path"": ""<XRController>{LeftHand}/{PrimaryButton}"",
+                    ""path"": ""<XRController>{LeftHand}/{GripButton}"",
                     ""interactions"": ""Press(behavior=2)"",
                     ""processors"": """",
                     ""groups"": """",
@@ -85,11 +72,55 @@ namespace Input
                 {
                     ""name"": """",
                     ""id"": ""dd3f2d9e-0ed6-4f64-887f-e1306771cb3e"",
-                    ""path"": ""<XRController>{RightHand}/{PrimaryButton}"",
+                    ""path"": ""<XRController>{RightHand}/{GripButton}"",
                     ""interactions"": ""Press(behavior=2)"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""CallMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f514ee98-e650-4d97-87a7-bf9a9a5bb0c0"",
+                    ""path"": ""<XRController>{LeftHand}/{SecondaryButton}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SlidePrev"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1668468e-a4cc-4a9e-a179-91df47a74125"",
+                    ""path"": ""<XRController>{RightHand}/{SecondaryButton}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SlidePrev"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8a549123-6613-421b-9ce7-53674b24b6a9"",
+                    ""path"": ""<XRController>{LeftHand}/{PrimaryButton}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SlideNext"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cefdf509-8123-46d5-8ebf-e6091854564d"",
+                    ""path"": ""<XRController>{RightHand}/{PrimaryButton}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SlideNext"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -100,8 +131,9 @@ namespace Input
 }");
             // Session
             m_Session = asset.FindActionMap("Session", throwIfNotFound: true);
-            m_Session_ChangeSlide = m_Session.FindAction("ChangeSlide", throwIfNotFound: true);
             m_Session_CallMenu = m_Session.FindAction("CallMenu", throwIfNotFound: true);
+            m_Session_SlidePrev = m_Session.FindAction("SlidePrev", throwIfNotFound: true);
+            m_Session_SlideNext = m_Session.FindAction("SlideNext", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -163,14 +195,16 @@ namespace Input
         // Session
         private readonly InputActionMap m_Session;
         private List<ISessionActions> m_SessionActionsCallbackInterfaces = new List<ISessionActions>();
-        private readonly InputAction m_Session_ChangeSlide;
         private readonly InputAction m_Session_CallMenu;
+        private readonly InputAction m_Session_SlidePrev;
+        private readonly InputAction m_Session_SlideNext;
         public struct SessionActions
         {
             private @UserInput m_Wrapper;
             public SessionActions(@UserInput wrapper) { m_Wrapper = wrapper; }
-            public InputAction @ChangeSlide => m_Wrapper.m_Session_ChangeSlide;
             public InputAction @CallMenu => m_Wrapper.m_Session_CallMenu;
+            public InputAction @SlidePrev => m_Wrapper.m_Session_SlidePrev;
+            public InputAction @SlideNext => m_Wrapper.m_Session_SlideNext;
             public InputActionMap Get() { return m_Wrapper.m_Session; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -180,22 +214,28 @@ namespace Input
             {
                 if (instance == null || m_Wrapper.m_SessionActionsCallbackInterfaces.Contains(instance)) return;
                 m_Wrapper.m_SessionActionsCallbackInterfaces.Add(instance);
-                @ChangeSlide.started += instance.OnChangeSlide;
-                @ChangeSlide.performed += instance.OnChangeSlide;
-                @ChangeSlide.canceled += instance.OnChangeSlide;
                 @CallMenu.started += instance.OnCallMenu;
                 @CallMenu.performed += instance.OnCallMenu;
                 @CallMenu.canceled += instance.OnCallMenu;
+                @SlidePrev.started += instance.OnSlidePrev;
+                @SlidePrev.performed += instance.OnSlidePrev;
+                @SlidePrev.canceled += instance.OnSlidePrev;
+                @SlideNext.started += instance.OnSlideNext;
+                @SlideNext.performed += instance.OnSlideNext;
+                @SlideNext.canceled += instance.OnSlideNext;
             }
 
             private void UnregisterCallbacks(ISessionActions instance)
             {
-                @ChangeSlide.started -= instance.OnChangeSlide;
-                @ChangeSlide.performed -= instance.OnChangeSlide;
-                @ChangeSlide.canceled -= instance.OnChangeSlide;
                 @CallMenu.started -= instance.OnCallMenu;
                 @CallMenu.performed -= instance.OnCallMenu;
                 @CallMenu.canceled -= instance.OnCallMenu;
+                @SlidePrev.started -= instance.OnSlidePrev;
+                @SlidePrev.performed -= instance.OnSlidePrev;
+                @SlidePrev.canceled -= instance.OnSlidePrev;
+                @SlideNext.started -= instance.OnSlideNext;
+                @SlideNext.performed -= instance.OnSlideNext;
+                @SlideNext.canceled -= instance.OnSlideNext;
             }
 
             public void RemoveCallbacks(ISessionActions instance)
@@ -215,8 +255,9 @@ namespace Input
         public SessionActions @Session => new SessionActions(this);
         public interface ISessionActions
         {
-            void OnChangeSlide(InputAction.CallbackContext context);
             void OnCallMenu(InputAction.CallbackContext context);
+            void OnSlidePrev(InputAction.CallbackContext context);
+            void OnSlideNext(InputAction.CallbackContext context);
         }
     }
 }

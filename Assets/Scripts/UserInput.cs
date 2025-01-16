@@ -9,7 +9,6 @@ public class UserInput : MonoBehaviour, Input.UserInput.ISessionActions
     SlideHolder[] slideHolders;
     FloatingDialog confirmationDialog;
     [SerializeField] AnalyticsCollector analyticsCollector;
-    [SerializeField] float threshold = 0.5f;
 
     void Awake()
     {
@@ -33,33 +32,27 @@ public class UserInput : MonoBehaviour, Input.UserInput.ISessionActions
         confirmationDialog = canvases.FirstOrDefault(canvas => canvas.gameObject.name == "Confirmation Dialog")?.GetComponent<FloatingDialog>();
     }
 
-    public void OnChangeSlide(InputAction.CallbackContext context)
+    public void OnSlidePrev(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (context.phase != InputActionPhase.Performed) return;
+        foreach (var slides in slideHolders)
         {
-            Vector2 joystickValue = context.ReadValue<Vector2>();
-
-            if (joystickValue.x >= threshold)
-            {
-                foreach (var slideHolder in slideHolders)
-                {
-                    slideHolder.NextSlide();
-                }
-            }
-
-            if (joystickValue.x <= -threshold)
-            {
-                foreach (var slideHolder in slideHolders)
-                {
-                    slideHolder.PrevSlide();
-                }
-            }
+            slides.PrevSlide();
         }
+    }
 
+    public void OnSlideNext(InputAction.CallbackContext context)
+    {
+        if (context.phase != InputActionPhase.Performed) return;
+        foreach (var slides in slideHolders)
+        {
+            slides.NextSlide();
+        }
     }
 
     public void OnCallMenu(InputAction.CallbackContext context)
     {
+        if (context.phase != InputActionPhase.Performed) return;
         confirmationDialog.Show();
     }
 
