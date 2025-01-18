@@ -10,13 +10,20 @@ public class AudienceManager : MonoBehaviour
 	[SerializeField] private GameObject[] avatars;
     [SerializeField] private RuntimeAnimatorController[] avatarAnimators;
     [SerializeField] private int numberOfSeatsToFill;
+    [SerializeField] private int maxNumberofAvatars;
     [SerializeField] private Vector3 avatarOffset = new Vector3(0, 0, 0);
     [SerializeField] private Vector3 avatarRotation = new Vector3(0, 0, 0);
     [SerializeField] private float avatarScale = 1;
     private List<Vector3> _allSittingPositions;
+    private float avatarsSlider;
 
     void Start()
     {
+        avatarsSlider = PlayerPrefs.GetFloat("AvatarsSlider", 0);
+        numberOfSeatsToFill = (int) (maxNumberofAvatars * (avatarsSlider/100d));
+        Debug.Log("numberOfSeatsToFill: " + numberOfSeatsToFill);
+        Debug.Log("maxNumOfAvatars: " + maxNumberofAvatars);
+        Debug.Log("avatarsSlider: " + avatarsSlider);
         DetectChairPositions();
         PlaceAvatars(numberOfSeatsToFill);
     }

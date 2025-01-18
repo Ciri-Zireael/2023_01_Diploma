@@ -5,7 +5,7 @@ using System.Linq;
 public class SlideHolder : MonoBehaviour
 {
 	[SerializeField] Sprite[] images;
-	public static string folderPath = "Presentation1";
+	public static string folderPath = "The hidden life of the google search";
 	Image canvas;
 	int currentImageIndex;
 

@@ -189,7 +189,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -223,15 +223,15 @@ RectTransform:
   m_GameObject: {fileID: 508753908}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1099403200}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 50}
+  m_AnchoredPosition: {x: -19.1, y: -20.8}
+  m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &508753910
 MonoBehaviour:
@@ -255,8 +255,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: This is a test hint
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3d2ad27e68ea5d747a452bfa93b8b7de, type: 2}
+  m_sharedMaterial: {fileID: -5675710571612451452, guid: 3d2ad27e68ea5d747a452bfa93b8b7de, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -280,7 +280,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22.05
+  m_fontSize: 32
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -521,12 +521,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6253060035739421010, guid: 868ad072d16ce5849942e531a50f2e78, type: 3}
       propertyPath: hintTextForMaxPace
-      value: Whooah easy there, easy. You've been out cold a couple a days now. Why
-        won't you just relax a second? Get your bearings.
+      value: Slow down a little
       objectReference: {fileID: 0}
     - target: {fileID: 6253060035739421010, guid: 868ad072d16ce5849942e531a50f2e78, type: 3}
       propertyPath: hintTextForMinPace
-      value: Pick up some pace buddy, everyone's bored to tears. No offense tho :3
+      value: Speak a bit faster
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -850,7 +849,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1099403196}
   m_LocalRotation: {x: -0, y: 0.5857934, z: -0, w: 0.81046045}
-  m_LocalPosition: {x: 0, y: 0, z: 1.781}
+  m_LocalPosition: {x: 0, y: 0, z: 1.7882}
   m_LocalScale: {x: 0.0036816108, y: 0.0018759945, z: 0.020908948}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -859,7 +858,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 71.718, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -1.316, y: 1.233}
+  m_AnchoredPosition: {x: -1.3346, y: 1.0577}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1149362694
@@ -2006,6 +2005,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5566922330266466245, guid: 8064480c9ab11a345ae62c7375c04edf, type: 3}
+      propertyPath: maxNumberofAvatars
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5566922330266466245, guid: 8064480c9ab11a345ae62c7375c04edf, type: 3}
       propertyPath: numberOfSeatsToFill
       value: 10
       objectReference: {fileID: 0}
@@ -2217,7 +2220,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3958146295536040891, guid: e3e90a01d629fda538f2091c6f6fb8c3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.79
+      value: 1.7783
       objectReference: {fileID: 0}
     - target: {fileID: 3958146295536040891, guid: e3e90a01d629fda538f2091c6f6fb8c3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2237,11 +2240,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3958146295536040891, guid: e3e90a01d629fda538f2091c6f6fb8c3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1.29
+      value: -1.3531
       objectReference: {fileID: 0}
     - target: {fileID: 3958146295536040891, guid: e3e90a01d629fda538f2091c6f6fb8c3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.0258
+      value: 1.2882
       objectReference: {fileID: 0}
     - target: {fileID: 3958146295536040891, guid: e3e90a01d629fda538f2091c6f6fb8c3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
